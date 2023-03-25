@@ -27,12 +27,6 @@ public class InternshipWindow extends UiPart<Stage> {
     private Label companyName;
     @FXML
     private Label jobTitle;
-    @FXML
-    private Label place;
-    @FXML
-    private Label salary;
-    @FXML
-    private Label rating;
 
     /**
      * Creates a new InternshipWindow.
@@ -43,26 +37,48 @@ public class InternshipWindow extends UiPart<Stage> {
         super(FXML, root);
         companyName.setText(internship.getCompanyName().fullName);
         jobTitle.setText(internship.getJobTitle().fullName);
-        place.setText(internship.getLocation().value);
-        salary.setText(internship.getSalary().value);
-        rating.setText(internship.getRating().value);
-        vBox.getChildren().add(new Text("Qualifications:"));
-        internship.getQualifications().stream()
-                .forEach(q -> vBox.getChildren().add(new Label(q.value)));
-        vBox.getChildren().add(new Text("Programming Languages:"));
-        internship.getProgrammingLanguages().stream()
-                .forEach(plg -> vBox.getChildren().add(new Label(plg.value)));
-        vBox.getChildren().add(new Text("Reviews:"));
-        internship.getReviews().stream()
-                .forEach(review -> vBox.getChildren().add(new Label(review.value)));
-        vBox.getChildren().add(new Text("Notes:"));
-        internship.getNotes().stream()
-                .forEach(n -> vBox.getChildren().add(new Label(n.value)));
-        vBox.getChildren().add(new Text("Reflections:"));
-        internship.getReflections().stream()
-                .forEach(r -> vBox.getChildren().add(new Label(r.value)));
-        for (int i = 0; i < 5; i += 1) {
-            vBox.getChildren().add(new Text(" "));
+
+        if (internship.getLocation().value != null) {
+            vBox.getChildren().add(new Text("Location:"));
+            vBox.getChildren().add(new Label(internship.getLocation().value));
+        }
+        if (internship.getSalary().value != null) {
+            vBox.getChildren().add(new Text("Salary:"));
+            vBox.getChildren().add(new Label(internship.getSalary().value));
+        }
+        if (internship.getRating().value != null) {
+            vBox.getChildren().add(new Text("Rating:"));
+            vBox.getChildren().add(new Label(internship.getRating().value));
+        }
+
+        if (!internship.getQualifications().isEmpty()) {
+            vBox.getChildren().add(new Text("Qualifications:"));
+            internship.getQualifications().stream()
+                    .forEach(q -> vBox.getChildren().add(new Label(q.value)));
+        }
+
+        if (!internship.getProgrammingLanguages().isEmpty()) {
+            vBox.getChildren().add(new Text("Programming Languages:"));
+            internship.getProgrammingLanguages().stream()
+                    .forEach(plg -> vBox.getChildren().add(new Label(plg.value)));
+        }
+
+        if (!internship.getReviews().isEmpty()) {
+            vBox.getChildren().add(new Text("Reviews:"));
+            internship.getReviews().stream()
+                    .forEach(review -> vBox.getChildren().add(new Label(review.value)));
+        }
+
+        if (!internship.getNotes().isEmpty()) {
+            vBox.getChildren().add(new Text("Notes:"));
+            internship.getNotes().stream()
+                    .forEach(n -> vBox.getChildren().add(new Label(n.value)));
+        }
+
+        if (!internship.getReflections().isEmpty()) {
+            vBox.getChildren().add(new Text("Reflections:"));
+            internship.getReflections().stream()
+                    .forEach(r -> vBox.getChildren().add(new Label(r.value)));
         }
     }
 

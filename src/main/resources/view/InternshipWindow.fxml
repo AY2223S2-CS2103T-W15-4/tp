@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.stage.Stage?>
 
-<fx:root resizable="true" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root resizable="true" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1">
    <icons>
       <Image url="@/images/internship.png" />
    </icons>
@@ -27,12 +27,6 @@
                      <Label fx:id="companyName" />
                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Job Title:" />
                      <Label fx:id="jobTitle" />
-                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Location:" />
-                     <Label fx:id="place" />
-                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Salary:" />
-                     <Label fx:id="salary" />
-                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Rating:" />
-                     <Label fx:id="rating" />
                   </children>
                </VBox>
             </content>
