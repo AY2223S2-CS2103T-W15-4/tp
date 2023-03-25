@@ -1,6 +1,9 @@
 package seedu.address.ui;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
@@ -30,11 +33,11 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private HBox cardPane;
     @FXML
+    private Button btn1;
+    @FXML
     private Label companyName;
     @FXML
     private Label jobTitle;
-    @FXML
-    private VBox reviews;
     @FXML
     private Label name;
     @FXML
@@ -61,8 +64,6 @@ public class PersonCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         companyName.setText(application.getCompanyName().fullName);
         jobTitle.setText(application.getJobTitle().fullName);
-        application.getReviews().stream()
-                .forEach(review -> reviews.getChildren().add(new Label(review.value)));
         internshipStatus.setText(application.getStatus().name());
         Contact companyContact = application.getContact();
         if (companyContact != null) {
@@ -79,6 +80,18 @@ public class PersonCard extends UiPart<Region> {
             interviewDate.setVisible(true);
             interviewDate.setManaged(true);
         }
+
+        InternshipWindow internshipWindow = new InternshipWindow(application);
+        btn1.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                if (!internshipWindow.isShowing()) {
+                    internshipWindow.show();
+                } else {
+                    internshipWindow.focus();
+                }
+            }
+        });
     }
 
     @Override
